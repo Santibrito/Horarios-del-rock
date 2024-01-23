@@ -114,6 +114,7 @@
       <Footer />
     </body>
   </div>
+  <SpeedInsights />
 </template>
 
 <script>
@@ -124,6 +125,8 @@ import PDFDocument from "./components/PDFDocument.vue";
 import Modal from "./components/Modal.vue";
 import Footer from "./components/Footer.vue";
 import html2pdf from "html2pdf.js";
+import { SpeedInsights } from '@vercel/speed-insights/vue';
+
 
 export default {
   components: {
@@ -132,6 +135,7 @@ export default {
     Footer,
     Modal,
     PDFDocument,
+    SpeedInsights
   },
   data() {
     return {
@@ -188,7 +192,7 @@ export default {
         margin: 5,
         filename: `Dia_${day}_Horarios_Del_Rock.pdf`,
         image: { type: "jpeg", quality: 1 },
-        html2canvas: { scale: 1, letterRendering: true, logging: true },
+        html2canvas: { scale: 3, letterRendering: true, logging: true },
         jsPDF: jsPDFConfig,
       };
 
