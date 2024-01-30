@@ -14,7 +14,7 @@
           <div class="day1">
             <img
               v-if="diaKey == 1"
-              src="../assets/img/banner-day1.png"
+              src="../assets/img/banner-day1.png" 
               alt="Dia 1 Banner"
             />
             <img
@@ -38,8 +38,8 @@
             class="flex justify-between items-center border-b border-gray-300 mb-4 w-full"
             style="color: #21b4d2; padding-bottom: 10px"
           >
-            <h2 class="text-2xl font-semibold">Horario</h2>
             <h2 class="text-2xl font-semibold">Banda</h2>
+            <h2 class="text-2xl font-semibold">Horario</h2>
           </li>
           <li
             v-for="band in banda"
@@ -53,8 +53,8 @@
               padding-bottom: 10px;
             "
           >
-            <h4 class="text-2xl">{{ band.horario }}</h4>
             <h4 class="text-2xl">{{ band.nombre }}</h4>
+            <h4 class="text-2xl">{{ band.horario }}</h4>
           </li>
         </ul>
         <div
