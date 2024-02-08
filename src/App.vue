@@ -180,21 +180,21 @@ export default {
       }
 
       const jsPDFConfig = {
-        unit: "mm",
-        format: "a4",
-        orientation: "portrait",
-        compress: true,
-        precision: 16,
-        render: "quality",
-      };
+  unit: "mm",
+  format: "a4",
+  orientation: "portrait",
+  compress: true,
+  precision: 16,
+  render: "text", 
+};
 
       const options = {
-        margin: 5,
-        filename: `Dia_${day}_Horarios_Del_Rock.pdf`,
-        image: { type: "jpeg", quality: 1 },
-        html2canvas: { scale: 3, letterRendering: true, logging: true },
-        jsPDF: jsPDFConfig,
-      };
+  margin: 5,
+  filename: `Dia_${day}_Horarios_Del_Rock.pdf`,
+  image: { type: "jpeg", quality: 1 },
+  html2canvas: { scale: 2, letterRendering: true, logging: true }, 
+  jsPDF: jsPDFConfig,
+};
 
       html2pdf(element, options);
     },
