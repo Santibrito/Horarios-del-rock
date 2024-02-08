@@ -184,7 +184,7 @@ export default {
   format: "a4",
   orientation: "portrait",
   compress: true,
-  precision: 16,
+  precision: 32,
   render: "text", 
 };
 
