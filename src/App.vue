@@ -181,21 +181,20 @@ export default {
 
       const jsPDFConfig = {
   unit: "mm",
-  format: "a4",
+  format: "a3", 
   orientation: "portrait",
   compress: true,
-  precision: 32,
-  render: "text", 
+  precision: 16,
+  render: "quality",
 };
 
-      const options = {
+const options = {
   margin: 5,
   filename: `Dia_${day}_Horarios_Del_Rock.pdf`,
   image: { type: "jpeg", quality: 1 },
-  html2canvas: { scale: 2, letterRendering: true, logging: true }, 
+  html2canvas: { scale: 2, letterRendering: true, logging: true }, // Reducir la escala de la imagen
   jsPDF: jsPDFConfig,
 };
-
       html2pdf(element, options);
     },
 
