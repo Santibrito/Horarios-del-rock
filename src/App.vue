@@ -172,31 +172,37 @@ export default {
      * @param {string} day - El día para el cual se generará el archivo PDF.
      */
     downloadPDF(day) {
-      const sectionId = `${day}Day`;
-      const element = document.getElementById(sectionId);
+  const sectionId = `${day}Day`;
+  const element = document.getElementById(sectionId);
 
-      if (!element) {
-        return;
-      }
+  if (!element) {
+    return;
+  }
 
-      const jsPDFConfig = {
-  unit: "mm",
-  format: "a3", 
-  orientation: "portrait",
-  compress: true,
-  precision: 16,
-  render: "quality",
-};
+  const filename = `Dia_${day}_Horarios_Del_Rock.pdf`;
 
-const options = {
-  margin: 5,
-  filename: `Dia_${day}_Horarios_Del_Rock.pdf`,
-  image: { type: "jpeg", quality: 1 },
-  html2canvas: { scale: 2, letterRendering: true, logging: true }, // Reducir la escala de la imagen
-  jsPDF: jsPDFConfig,
-};
-      html2pdf(element, options);
-    },
+  // Crear un objeto jsPDF
+  const pdf = new jsPDF('p', 'mm', 'a3');
+
+  // Opciones de html2canvas para el renderizado
+  const options = {
+    scale: 2, // Escala para mejorar la calidad
+    useCORS: true, // Habilitar el uso de CORS para imágenes
+    logging: true, // Habilitar el registro para detectar posibles errores
+  };
+
+  // Renderizar el contenido HTML a un lienzo usando html2canvas
+  html2canvas(element, options).then(canvas => {
+    // Convertir el lienzo a una imagen en formato PNG
+    const imgData = canvas.toDataURL('image/png');
+
+    // Añadir la imagen al PDF
+    pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+
+    // Guardar el PDF
+    pdf.save(filename);
+  });
+},
 
     /**
      * Limpia el almacenamiento local eliminando la información relacionada con las bandas seleccionadas para un día específico.
